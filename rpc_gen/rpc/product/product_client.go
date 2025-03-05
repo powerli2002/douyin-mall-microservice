@@ -16,6 +16,9 @@ type RPCClient interface {
 	ListProducts(ctx context.Context, Req *product.ListProductsReq, callOptions ...callopt.Option) (r *product.ListProductsResp, err error)
 	GetProduct(ctx context.Context, Req *product.GetProductReq, callOptions ...callopt.Option) (r *product.GetProductResp, err error)
 	SearchProducts(ctx context.Context, Req *product.SearchProductsReq, callOptions ...callopt.Option) (r *product.SearchProductsResp, err error)
+	InsertProducts(ctx context.Context, Req *product.InsertProductsReq, callOptions ...callopt.Option) (r *product.Empty, err error)
+	DeleteProducts(ctx context.Context, Req *product.DeleteProductsReq, callOptions ...callopt.Option) (r *product.Empty, err error)
+	UpdateProducts(ctx context.Context, Req *product.UpdateProductsReq, callOptions ...callopt.Option) (r *product.Empty, err error)
 }
 
 func NewRPCClient(dstService string, opts ...client.Option) (RPCClient, error) {
@@ -54,4 +57,16 @@ func (c *clientImpl) GetProduct(ctx context.Context, Req *product.GetProductReq,
 
 func (c *clientImpl) SearchProducts(ctx context.Context, Req *product.SearchProductsReq, callOptions ...callopt.Option) (r *product.SearchProductsResp, err error) {
 	return c.kitexClient.SearchProducts(ctx, Req, callOptions...)
+}
+
+func (c *clientImpl) InsertProducts(ctx context.Context, Req *product.InsertProductsReq, callOptions ...callopt.Option) (r *product.Empty, err error) {
+	return c.kitexClient.InsertProducts(ctx, Req, callOptions...)
+}
+
+func (c *clientImpl) DeleteProducts(ctx context.Context, Req *product.DeleteProductsReq, callOptions ...callopt.Option) (r *product.Empty, err error) {
+	return c.kitexClient.DeleteProducts(ctx, Req, callOptions...)
+}
+
+func (c *clientImpl) UpdateProducts(ctx context.Context, Req *product.UpdateProductsReq, callOptions ...callopt.Option) (r *product.Empty, err error) {
+	return c.kitexClient.UpdateProducts(ctx, Req, callOptions...)
 }

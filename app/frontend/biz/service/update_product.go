@@ -25,7 +25,7 @@ func (h *UpdateProductService) Run(req *product.UpdateProductsReq) (resp *produc
 	//}()
 	// todo edit your code
 	fmt.Println("开始RPC调用Product服务")
-	_, err = rpc.ProductClient.InsertProducts(h.Context, &rpcproduct.InsertProductsReq{Product: &rpcproduct.Product{
+	_, err = rpc.ProductClient.UpdateProducts(h.Context, &rpcproduct.UpdateProductsReq{Product: &rpcproduct.Product{
 		Id:          req.Product.Id,
 		Name:        req.Product.Name,
 		Price:       req.Product.Price,
